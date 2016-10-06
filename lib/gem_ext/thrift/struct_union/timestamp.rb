@@ -1,5 +1,5 @@
 require 'active_support/core_ext/array/extract_options'
-require 'active_support/core_ext/object/blank'
+require 'active_support/core_ext/object'
 require 'active_support/core_ext/hash/indifferent_access'
 require 'active_support/core_ext/time/zones'
 require 'active_support/core_ext/module/delegation'
