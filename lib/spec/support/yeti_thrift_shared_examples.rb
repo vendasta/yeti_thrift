@@ -74,3 +74,38 @@ shared_examples_for 'a yeti_thrift Timestamp field' do
   end
 
 end
+
+# Shared example for ensuring required fields are actually required
+# Expects to be called with arguments:
+# @param :klass [Class] The class of the Thrift struct to test
+# @param :required_fields [Array<String,Symbol>] List of required fields to verify
+# And expects these variables to be defined:
+# @param :object_attrs [Hash] Attributes necessary to initialize a :klass
+shared_examples_for 'a yeti_thrift implementation with required fields' do |klass, required_fields|
+  describe klass.to_s do
+    required_fields.each do |field|
+      context "when #{field} is missing" do
+        let(:filtered_attrs) do
+          object_attrs.symbolize_keys.tap { |h| h.delete(field.to_sym) }
+        end
+        let(:instance) { klass.new(filtered_attrs) }
+
+        it "requires #{field}" do
+          expect do
+            instance.validate
+          end.to raise_error(Thrift::ProtocolException, "Required field #{field} is unset!")
+        end
+      end
+    end
+  end
+end
+
+# Test the helpful initializer methods Thrift generates. Useful for maintaining 100% test
+#   coverage. Expects these variables to be defined:
+# @param initializer [String] initialization method name
+# @param val [Object] The value for the initializer to set
+shared_examples_for 'a yeti_thrift union initializer' do
+  it 'allows initialization of the union with the right type' do
+    described_class.send(initializer, val).validate
+  end
+end
