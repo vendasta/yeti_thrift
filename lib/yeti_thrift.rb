@@ -9,7 +9,6 @@ require "yeti_thrift/serializer"
 require "yeti_thrift/base64_deserializer"
 require "yeti_thrift/base64_serializer"
 require 'yeti_thrift/rake/thrift_gen_task'
-require 'active_support'
 require 'active_support/core_ext/object'
 
 # Check field types when assigning to structs
