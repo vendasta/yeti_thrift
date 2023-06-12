@@ -28,7 +28,6 @@ Gem::Specification.new do |gem|
   gem.add_runtime_dependency 'thin'
   gem.add_runtime_dependency 'rack'
 
-  gem.add_development_dependency 'bundler', '2.2.26'
   gem.add_development_dependency 'rake'
   gem.add_development_dependency 'rspec', '~> 3.0.0'
   gem.add_development_dependency 'yard'
