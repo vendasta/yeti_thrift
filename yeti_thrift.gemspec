@@ -18,7 +18,7 @@ Gem::Specification.new do |gem|
   gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
   gem.require_paths = ["lib", "lib/yeti_thrift/gen-rb"]
 
-  gem.add_runtime_dependency 'thrift', '>= 0.9.1'
+  gem.add_runtime_dependency 'thrift', '>= 0.9.1' '< 0.18.0'
   gem.add_runtime_dependency 'activesupport'
   gem.add_runtime_dependency 'faraday'
 
