@@ -35,4 +35,6 @@ Gem::Specification.new do |gem|
   gem.add_development_dependency 'simplecov'
   # prior to v4.0 activesupport does include tzinfo as a dependency
   gem.add_development_dependency 'tzinfo'
+  # thin web server used for testing only works with rack 2.x
+  gem.add_development_dependency 'rack', '~> 2.0'
 end
