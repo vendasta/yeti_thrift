@@ -18,7 +18,7 @@ Gem::Specification.new do |gem|
   gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
   gem.require_paths = ["lib", "lib/yeti_thrift/gen-rb"]
 
-  gem.add_runtime_dependency 'thrift', '< 0.18'
+  gem.add_runtime_dependency 'thrift', '>= 0.9.1'
   gem.add_runtime_dependency 'activesupport'
   gem.add_runtime_dependency 'faraday'
 
@@ -26,13 +26,15 @@ Gem::Specification.new do |gem|
   # the gemspec for thrift, but 0.9.1 doesn't seem to have a
   # gemspec. Maybe a bug in that release?
   gem.add_runtime_dependency 'thin'
-  gem.add_runtime_dependency 'rack', '2.0.1'
+  gem.add_runtime_dependency 'rack'
 
-  gem.add_development_dependency 'rake', '< 11.0'
-  gem.add_development_dependency 'rspec', '~> 3.0.0'
+  gem.add_development_dependency 'rake'
+  gem.add_development_dependency 'rspec', '~> 3.0'
   gem.add_development_dependency 'yard'
   gem.add_development_dependency 'redcarpet'
   gem.add_development_dependency 'simplecov'
   # prior to v4.0 activesupport does include tzinfo as a dependency
   gem.add_development_dependency 'tzinfo'
+  # thin web server used for testing only works with rack 2.x
+  gem.add_development_dependency 'rack', '~> 2.0'
 end

@@ -1,6 +1,33 @@
 require 'spec_helper'
 require 'thrift/server/thin_http_server'
 
+module ResponseNormalizer
+  module ClassMethods
+    def unpack_response(response)
+      if response.is_a?(Rack::Response)
+        [response.status, response.headers, response.body]
+      else
+        response
+      end
+    end
+
+    def successful_request(rack_request, processor, protocol_factory)
+      unpack_response(super)
+    end
+
+    def failed_request
+      unpack_response(super)
+    end
+  end
+end
+
+
+class Thrift::ThinHTTPServer::RackApplication
+  class << self
+    prepend ResponseNormalizer::ClassMethods
+  end
+end
+
 describe Thrift::FaradayHTTPClientTransport do
 
   describe 'examples mocking out the actual network traffic' do
