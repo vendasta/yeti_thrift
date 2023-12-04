@@ -1,3 +1,4 @@
+require 'active_support'
 require 'active_support/core_ext/string/inflections'
 require 'yeti_thrift/exceptions'
 
