@@ -1,5 +1,4 @@
 require 'spec_helper'
-require 'active_support'
 
 describe Thrift::Struct_Union, 'timestamp' do
 
