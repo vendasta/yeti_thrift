@@ -1,0 +1,6 @@
+services:
+  - name: yeti_thrift
+    owner: honey-badger
+    language: ruby
+    nonServiceType: library
+    description: "Yesware common Thrift definitions and extensions"
