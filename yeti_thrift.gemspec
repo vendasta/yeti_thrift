@@ -22,12 +22,6 @@ Gem::Specification.new do |gem|
   gem.add_runtime_dependency 'activesupport'
   gem.add_runtime_dependency 'faraday'
 
-  # Include dependencies of Thrift. Not sure why they're not in
-  # the gemspec for thrift, but 0.9.1 doesn't seem to have a
-  # gemspec. Maybe a bug in that release?
-  gem.add_runtime_dependency 'thin'
-  gem.add_runtime_dependency 'rack'
-
   gem.add_development_dependency 'rake'
   gem.add_development_dependency 'rspec', '~> 3.0'
   gem.add_development_dependency 'yard'
@@ -37,4 +31,6 @@ Gem::Specification.new do |gem|
   gem.add_development_dependency 'tzinfo'
   # thin web server used for testing only works with rack 2.x
   gem.add_development_dependency 'rack', '~> 2.0'
+  # test-only: faraday_http_client_transport_spec boots Thrift::ThinHTTPServer
+  gem.add_development_dependency 'thin'
 end
