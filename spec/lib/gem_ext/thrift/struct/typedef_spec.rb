@@ -11,11 +11,11 @@ describe Thrift::Struct, 'typedefs' do
   end
   let(:struct_member_symbols) do
     {
-      :version => { :ruby_type => Fixnum,
+      :version => { :ruby_type => Integer,
                     :thrift_type => ::Thrift::Types::I32 },
       :object_id => { :ruby_type => String,
                       :thrift_type => ::Thrift::Types::STRING },
-      :time => { :ruby_type => Fixnum,
+      :time => { :ruby_type => Integer,
                  :thrift_type => ::Thrift::Types::I64 }
     }
   end

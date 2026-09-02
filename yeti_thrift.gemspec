@@ -17,6 +17,7 @@ Gem::Specification.new do |gem|
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
   gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
   gem.require_paths = ["lib", "lib/yeti_thrift/gen-rb"]
+  gem.required_ruby_version = '>= 3.3.0'
 
   gem.add_runtime_dependency 'thrift', '>= 0.9.1'
   gem.add_runtime_dependency 'activesupport'
