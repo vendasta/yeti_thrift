@@ -11,11 +11,11 @@ describe Thrift::Struct, 'typedefs' do
   end
   let(:struct_member_symbols) do
     {
-      :version => { :ruby_type => Fixnum,
+      :version => { :ruby_type => Integer,
                     :thrift_type => ::Thrift::Types::I32 },
       :object_id => { :ruby_type => String,
                       :thrift_type => ::Thrift::Types::STRING },
-      :time => { :ruby_type => Fixnum,
+      :time => { :ruby_type => Integer,
                  :thrift_type => ::Thrift::Types::I64 }
     }
   end
@@ -23,15 +23,18 @@ describe Thrift::Struct, 'typedefs' do
   # The Thrift types of the structs are defined through constants in
   # the class, e.g.
   #
-  # VERSION = 1
-  # OBJECT_ID = 2
-  # TIME = 3
+  # VERSION_FIELD_ID = 1
+  # OBJECT_ID_FIELD_ID = 2
+  # TIME_FIELD_ID = 3
   #
   # FIELDS = {
-  #   VERSION => {:type => ::Thrift::Types::I32, :name => 'version', :optional => true},
-  #   OBJECT_ID => {:type => ::Thrift::Types::STRING, :name => 'object_id', :optional => true},
-  #   TIME => {:type => ::Thrift::Types::I64, :name => 'time', :optional => true}
+  #   VERSION_FIELD_ID => {:type => ::Thrift::Types::I32, :name => 'version', :optional => true},
+  #   OBJECT_ID_FIELD_ID => {:type => ::Thrift::Types::STRING, :name => 'object_id', :optional => true},
+  #   TIME_FIELD_ID => {:type => ::Thrift::Types::I64, :name => 'time', :optional => true}
   # }
+  #
+  # The "_FIELD_ID" suffix is emitted by the compiler these fixtures are
+  # generated with (0.24.0); 0.18.1 emitted the bare field name.
   #
   # The memoized FIELDS reference and the thrift_field_constant method
   # help to extract these.
@@ -39,7 +42,7 @@ describe Thrift::Struct, 'typedefs' do
   let(:struct_thrift_fields_hash) { struct.class::FIELDS }
 
   def thrift_field_constant(field_symbol)
-    struct.class.const_get(field_symbol.upcase)
+    struct.class.const_get("#{field_symbol.upcase}_FIELD_ID")
   end
 
 
